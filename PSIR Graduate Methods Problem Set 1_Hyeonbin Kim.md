@@ -117,7 +117,7 @@ demora$treatment <- factor(
 2. 통제집단은 234개, 종교적 가치 메시지를 받은 집단은 226개, 종교적 가치 메시지와 단서를 함께 받은 집단은 222개이다.
 3. 결측치는 32개이다.
 4. 연령의 평균은 54.96481세, 표준편차는 17.77131세이다. 여성으로 기록된 응답자의 비율은 52.78592%이다.
-5. refugee_thermometer는 0~100점 척도이고 거의 대칭인 분포임. 응답이 넓게 퍼져 있고 50점에 몰려 있음.  resettlement_support는 0~1지수이며 0~0.5에 집중되어 있음. school_support는 1~5척도이고 높은 쪽에 몰려 있음. benefits_support는 1~5척도이며 낮은 쪽에 몰려 있음. 변수 간 비교를 하기 위해서는 척도를 표준화할 필요가 있음.
+5. refugee_thermometer는 0-100점 척도이고 거의 대칭인 분포임. 응답이 넓게 퍼져 있고 50점에 몰려 있음.  resettlement_support는 0-1지수이며 0~0.5에 집중되어 있음. school_support는 1-5척도이고 높은 쪽에 몰려 있음. benefits_support는 1-5척도이며 낮은 쪽에 몰려 있음. 변수 간 비교를 하기 위해서는 척도를 표준화할 필요가 있음.
 
 ```{r}
 # 2.1.
@@ -137,6 +137,7 @@ mean(demora$gender == "Female")
 
 # 2.5.
 outcomes <- c("refugee_thermometer", "resettlement_support", "school_support", "benefits_support")
+
 sapply(demora[outcomes], min, na.rm = TRUE)
 sapply(demora[outcomes], max, na.rm = TRUE)
 sapply(demora[outcomes], mean, na.rm = TRUE)
@@ -157,37 +158,21 @@ sapply(demora[outcomes], sd, na.rm = TRUE)
 --------------------------------------------------------------------------------
 
 [PUT YOUR ANSWER HERE]
-##3.1. 
-통제집단일 때, 비가중평균은 refugee_thermometer는 47.9, resettlement_support는 0.346, school_support는 3.36, benefits_support는 2.13이다.
-종교적 가치 메시지가 개입한 집단일 때, 비가중평균은 refugee_thermometer는 57.2, resettlement_support는 0.364, school_support는 3.34, benefits_support는 1.99이다.
-종교적 가치 메시지와 단서가 함께 개입한 집단일 때, 비가중평균은 refugee_thermometer는 53.2, resettlement_support는 0.365, school_support는 3.36, benefits_support는 1.99이다.
-
-##3.2.
-종교적 가치 메시지는 난민에 대한 감정온도를 통제집단보다 9.362067점 높임. 재정착 지지는 0.01778421 정도를 높여줌. 학교 관련 지지는 -0.01826639점 낮아졌음. 복지 혜택 지지는 -0.1414795점 낮아졌음.
-
-##3.3.
-출처 단서가 붙은 종교적 가치 메시지는 난민 감정온도를 통제집단보다 5.322929점 높임. 재정착 지지는 0.01871102 정도를 높여줌. 학교 관련 지지는 0.005890506점 높여줌, 복지 혜택 지지는 -0.1372141점 낮아졌음.
-
-##3.4.
-refugee_thermometer에서 메시지 집단은 통제집단보다 평균 9.362067점 높고, 메시지 + 출처 집단은 5.322929점 높다.
-resettlement_support에서 메시지 효과는 0.01778421, 메시지 + 출처 집단 효과는 0.01871102로 거의 같다.
-school_support에서 메시지 효과는 -0.01826639점, 메시지 + 출처 집단 효과는 0.005890506점이다. 
-benefits_support에서 메시지 효과는 -0.1414795점, 메시지 + 출처 집단 효과는 -0.1372141점이다.
-개입효과는 감정온도계에서 가장 뚜렷하다. 재정착, 학교, 복지 지지에서는 효과가 매우 작게 나타난다.
-
-## 3.5.
-
+1. 통제집단일 때, 비가중평균은 refugee_thermometer는 47.9, resettlement_support는 0.346, school_support는 3.36, benefits_support는 2.13이다. 종교적 가치 메시지가 개입한 집단일 때, 비가중평균은 refugee_thermometer는 57.2, resettlement_support는 0.364, school_support는 3.34, benefits_support는 1.99이다. 종교적 가치 메시지와 단서가 함께 개입한 집단일 때, 비가중평균은 refugee_thermometer는 53.2, resettlement_support는 0.365, school_support는 3.36, benefits_support는 1.99이다.
+2. 종교적 가치 메시지는 난민에 대한 감정온도를 통제집단보다 9.362067점 높임. 재정착 지지는 0.01778421 정도를 높여줌. 학교 관련 지지는 -0.01826639점 낮아졌음. 복지 혜택 지지는 -0.1414795점 낮아졌음.
+3. 출처 단서가 붙은 종교적 가치 메시지는 난민 감정온도를 통제집단보다 5.322929점 높임. 재정착 지지는 0.01871102 정도를 높여줌. 학교 관련 지지는 0.005890506점 높여줌, 복지 혜택 지지는 -0.1372141점 낮아졌음.
+4. refugee_thermometer에서 메시지 집단은 통제집단보다 평균 9.362067점 높고, 메시지 + 출처 집단은 5.322929점 높다. resettlement_support에서 메시지 효과는 0.01778421, 메시지 + 출처 집단 효과는 0.01871102로 거의 같다. school_support에서 메시지 효과는 -0.01826639점, 메시지 + 출처 집단 효과는 0.005890506점이다. benefits_support에서 메시지 효과는 -0.1414795점, 메시지 + 출처 집단 효과는 -0.1372141점이다. 개입효과는 감정온도계에서 가장 뚜렷하다. 재정착, 학교, 복지 지지에서는 효과가 매우 작게 나타난다.
 
 ```{r}
-## [PUT YOUR CODE HERE]
-```
 ##3.1.
 library(tidyverse)
+
 demora %>% group_by(treatment) %>% summarize(mean_thermometer = mean(refugee_thermometer, na.rm = TRUE), mean_resettlement = mean(resettlement_support, na.rm = TRUE), mean_school = mean(school_support, na.rm = TRUE), mean_benefits = mean(benefits_support, na.rm = TRUE))
 
 ##3.2.
 control <- demora %>% filter(treatment == "Control")
 message <- demora %>% filter(treatment == "Religious values message")
+
 mean(message$refugee_thermometer, na.rm = TRUE) - mean(control$refugee_thermometer, na.rm = TRUE)
 mean(message$resettlement_support, na.rm = TRUE) - mean(control$resettlement_support, na.rm = TRUE)
 mean(message$school_support, na.rm = TRUE) - mean(control$school_support, na.rm = TRUE)
@@ -195,11 +180,16 @@ mean(message$benefits_support, na.rm = TRUE) - mean(control$benefits_support, na
 
 ##3.3.
 cue_group <- demora %>% filter(treatment == "Religious values + source cue")
+
 mean(cue_group$refugee_thermometer, na.rm = TRUE) - mean(control$refugee_thermometer, na.rm = TRUE)
 mean(cue_group$resettlement_support, na.rm = TRUE) - mean(control$resettlement_support, na.rm = TRUE)
 mean(cue_group$school_support, na.rm = TRUE) - mean(control$school_support, na.rm = TRUE)
 mean(cue_group$benefits_support, na.rm = TRUE) - mean(control$benefits_support, na.rm = TRUE)
 
+##3.5.
+
+
+```
 --------------------------------------------------------------------------------
 
 ## Question 4: Randomization and Independence
