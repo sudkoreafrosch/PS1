@@ -122,7 +122,7 @@ demora$treatment <- factor(
 
 2. The control group has 234 respondents, the group that received the religious-values message has 226 respondents, and the group that received the religious-values message with a source cue has 222 respondents.
 
-3. There are 32 missing values.
+3. Two variables contain missing values: refugee_thermometer (25 missing) and ideology (7 missing). The remaining nine variables have no missing values.
 
 4. The mean age is 54.96 years, and the standard deviation is 17.77 years. The share of respondents recorded as female is 52.79%.
 
