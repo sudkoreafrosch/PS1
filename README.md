@@ -40,7 +40,7 @@ White evangelical Republicans often hold two identities that point in different 
 
 This exercise is based on: DeMora, Stephanie L., Jennifer L. Merolla, Brian Newman, and Elizabeth J. Zechmeister. 2024. "[Jesus Was a Refugee: Religious Values Framing Can Increase Support for Refugees Among White Evangelical Republicans.](https://doi.org/10.1007/s11109-024-09912-2)" *Political Behavior* 46: 2145--2168. The authors' replication materials are available from the [Harvard Dataverse](https://doi.org/10.7910/DVN/QYZQ4Y).
 
-Read the sections titled "An Experiment to Assess the Religious Values Frame" and "Results of the Religious Values Framing Experiment" carefully. The researchers randomly assigned respondents to a control condition, a religious-values message without a source cue, or the same message accompanied by an evangelical source cue. The control group received neither the message nor its two follow-up questions.
+Read the sections titled "An Experiment to Assess the Religious Values Frame" and "Results of the Religious Values Framing Experiment" carefully. The researchers randomly assigned respondents to a control condition, a religious value message without a source cue, or the same message accompanied by an evangelical source cue. The control group received neither the message nor its two follow-up questions.
 
 The supplied file, `data/demora_2024.csv`, is a simplified teaching version of the authors' cleaned YouGov sample. Each row describes one respondent. Higher values on every outcome indicate more favorable attitudes toward refugees. Do not use `sample_weight` unless a question specifically asks you to do so.
 
@@ -49,7 +49,7 @@ The supplied file, `data/demora_2024.csv`, is a simplified teaching version of t
  -------------------------- -----------------------------------------------------
  `respondent_id`            Anonymous row identifier
 
- `treatment`                Control, religious-values message, or religious-values message with a source cue
+ `treatment`                Control, religious value message, or religious value message with a source cue
 
  `refugee_thermometer`      Feeling toward refugees, from 0 to 100
 
@@ -90,15 +90,15 @@ demora$treatment <- factor(
 1. State the paper's causal research question in your own words.
 2. What are the three experimental conditions? What features distinguish them?
 3. What is the unit of random assignment? What is the unit of observation in the supplied data?
-4. Focus first on the religious-values message without a source cue versus the control condition. Define $T_i$, $Y_i(1)$, $Y_i(0)$, and the average treatment effect when `refugee_thermometer` is the outcome.
+4. Focus first on the religious value message without a source cue versus the control condition. Define $T_i$, $Y_i(1)$, $Y_i(0)$, and the average treatment effect when `refugee_thermometer` is the outcome.
 5. Why can we never directly observe $Y_i(1)-Y_i(0)$ for any respondent?
 
 --------------------------------------------------------------------------------
 
 [PUT YOUR ANSWER HERE]
-1. The research question of this paper is: “What is the effect of a religious message that calls for accepting more refugees on white evangelical Republicans’ attitudes toward accepting refugees?”
+1. The research question of this paper is: “What is the effect of a religious value message that calls for accepting more refugees on white evangelical Republicans’ attitudes toward accepting refugees?”
 
-2. In the first condition, respondents do not receive the religious-values message. In the second condition (RV), respondents receive the religious-values message. In the third condition (RV+SC), respondents receive the religious-values message together with its source cue. The first condition differs from the other two in whether a message is given at all. RV and RV+SC differ only in whether a source cue is included.
+2. In the first condition, respondents do not receive the religious value message. In the second condition (RV), respondents receive the religious value message. In the third condition (RV+SC), respondents receive the religious value message together with its source cue. The first condition differs from the other two in whether a message is given at all. RV and RV+SC differ only in whether a source cue is included.
 
 3. The unit of random assignment is the individual respondent. Each YouGov panelist was randomly assigned to one of the three conditions. The unit of observation in the supplied data is also the individual respondent.
 
@@ -120,7 +120,7 @@ demora$treatment <- factor(
 [PUT YOUR ANSWER HERE]
 1. There are 682 observations and 11 variables.
 
-2. The control group has 234 respondents, the group that received the religious-values message has 226 respondents, and the group that received the religious-values message with a source cue has 222 respondents.
+2. The control group has 234 respondents, the group that received the religious value message has 226 respondents, and the group that received the religious value message with a source cue has 222 respondents.
 
 3. Two variables contain missing values: refugee_thermometer (25 missing) and ideology (7 missing). The remaining nine variables have no missing values.
 
@@ -158,8 +158,8 @@ sapply(demora[outcomes], sd, na.rm = TRUE)
 ## Question 3: Estimating Average Treatment Effects
 
 1. Calculate the unweighted mean of each outcome separately for the three experimental conditions.
-2. For each outcome, estimate the effect of the religious-values message relative to the control using a difference in means.
-3. For each outcome, estimate the effect of the religious-values message with a source cue relative to the control using a difference in means.
+2. For each outcome, estimate the effect of the religious value message relative to the control using a difference in means.
+3. For each outcome, estimate the effect of the religious value message with a source cue relative to the control using a difference in means.
 4. Interpret every estimate in the units of its outcome. For example, distinguish points on the 0--100 feeling thermometer from changes on the 0--1 resettlement scale.
 5. Create one clearly labeled figure comparing mean `refugee_thermometer` scores across the three conditions. Preserve the experimental ordering shown in the variable table.
 6. Based on these estimates, does the source cue appear to strengthen the message? Explain what comparison answers this question.
@@ -167,19 +167,19 @@ sapply(demora[outcomes], sd, na.rm = TRUE)
 --------------------------------------------------------------------------------
 
 [PUT YOUR ANSWER HERE]
-1. For the control group, the unweighted means are 47.9 for refugee_thermometer, 0.346 for resettlement_support, 3.36 for school_support, and 2.13 for benefits_support. For the group that received the religious-values message, the unweighted means are 57.2 for refugee_thermometer, 0.364 for resettlement_support, 3.34 for school_support, and 1.99 for benefits_support. For the group that received the religious-values message with the source cue, the unweighted means are 53.2 for refugee_thermometer, 0.365 for resettlement_support, 3.36 for school_support, and 1.99 for benefits_support.
+1. For the control group, the unweighted means are 47.9 for refugee_thermometer, 0.346 for resettlement_support, 3.36 for school_support, and 2.13 for benefits_support. For the group that received the religious value message, the unweighted means are 57.2 for refugee_thermometer, 0.364 for resettlement_support, 3.34 for school_support, and 1.99 for benefits_support. For the group that received the religious value message with the source cue, the unweighted means are 53.2 for refugee_thermometer, 0.365 for resettlement_support, 3.36 for school_support, and 1.99 for benefits_support.
 
-2. Compared with the control group, the religious-values message raises the refugee feeling thermometer by 9.36 points and resettlement support by 0.018. In contrast, school support is lower by 0.018 points, and unemployment benefits support is lower by 0.141 points.
+2. Compared with the control group, the religious value message raises the refugee feeling thermometer by 9.36 points and resettlement support by 0.018. In contrast, school support is lower by 0.018 points, and unemployment benefits support is lower by 0.141 points.
 
-3. Compared with the control group, the religious-values message with a source cue raises the refugee feeling thermometer by 5.32 points, resettlement support by 0.019, and school support by 0.006 points. In contrast, unemployment benefits support is lower by 0.137 points.
+3. Compared with the control group, the religious value message with a source cue raises the refugee feeling thermometer by 5.32 points, resettlement support by 0.019, and school support by 0.006 points. In contrast, unemployment benefits support is lower by 0.137 points.
 
-4. On refugee_thermometer, which runs from 0 to 100, the group that received the religious-values message scores 9.36 points higher on average than the control group, and the group that received the message with the source cue scores 5.32 points higher. These are changes of about 9% and 5% of the full scale. On resettlement_support, which runs from 0 to 1, the effects are 0.018 and 0.019, or about 2 percentage points of the scale range, so the two treatments are almost the same. On school_support, which runs from 1 to 5, the effects are −0.018 points for the religious-values message and 0.006 points for the message with the source cue, which are close to zero. On benefits_support, also a 1–5 scale, the effects are −0.141 points and −0.137 points. The treatment effect is clearest for the refugee feeling thermometer, while the effects on resettlement, school, and unemployment benefits support are very small.
+4. On refugee_thermometer, which runs from 0 to 100, the group that received the religious value message scores 9.36 points higher on average than the control group, and the group that received the message with the source cue scores 5.32 points higher. These are changes of about 9% and 5% of the full scale. On resettlement_support, which runs from 0 to 1, the effects are 0.018 and 0.019, or about 2 percentage points of the scale range, so the two treatments are almost the same. On school_support, which runs from 1 to 5, the effects are −0.018 points for the religious value message and 0.006 points for the message with the source cue, which are close to zero. On benefits_support, also a 1–5 scale, the effects are −0.141 points and −0.137 points. The treatment effect is clearest for the refugee feeling thermometer, while the effects on resettlement, school, and unemployment benefits support are very small.
 
 5. The figure is shown below.
  <img width="1066" height="693" alt="Image" src="https://github.com/user-attachments/assets/37abfc65-8a22-4d68-88fd-cafd421362bb" />
 
  
-6. On the refugee feeling thermometer, the mean of the group that received the message with the source cue is 4.04 points lower than the mean of the group that received the religious-values message alone. In other words, the effect relative to the control group drops from 9.36 points without the source cue to 5.32 points with it, so the source cue seems to weaken the message rather than strengthen it. For resettlement support (0.001), school support (0.024), and unemployment benefits support (0.004), the two treatment groups are essentially the same. Therefore, based on these estimates, the source cue does not strengthen the message.
+6. On the refugee feeling thermometer, the mean of the group that received the message with the source cue is 4.04 points lower than the mean of the group that received the religious value message alone. In other words, the effect relative to the control group drops from 9.36 points without the source cue to 5.32 points with it, so the source cue seems to weaken the message rather than strengthen it. For resettlement support (0.001), school support (0.024), and unemployment benefits support (0.004), the two treatment groups are essentially the same. Therefore, based on these estimates, the source cue does not strengthen the message.
 
 ```{r}
 ##3.1.
@@ -222,7 +222,7 @@ mean(message_cue$benefits_support, na.rm = TRUE) - mean(message$benefits_support
 1. Compare age, gender, education, and ideology across the three conditions. Present a readable balance table. You will need to explain how you summarized categorical variables.
 2. Are the groups exactly identical on these observed pretreatment characteristics? Should random assignment make them exactly identical in this realized sample?
 3. What does random assignment imply about the relationship between treatment assignment and both observed and unobserved pretreatment characteristics across repeated assignments?
-4. Based on the research design, is $Y_i(1),Y_i(0) \perp T_i$ plausible for the religious-values-message-versus-control comparison? Explain why the design, rather than the observed balance table alone, is the basis for your answer.
+4. Based on the research design, is $Y_i(1),Y_i(0) \perp T_i$ plausible for the religious value-message-versus-control comparison? Explain why the design, rather than the observed balance table alone, is the basis for your answer.
 5. Suppose one balance difference is statistically significant at the 0.05 level after examining twenty pretreatment variables. Would this fact alone invalidate the experiment? Explain.
 
 --------------------------------------------------------------------------------
@@ -286,31 +286,31 @@ t(balance_table)
 
 5. First, it is hard to generalize the results to other populations. In fact, in the experiment with non-evangelicals, no effect on the feeling thermometer appeared. Second, the effects come from people who read the message carefully. In real life, people often skim messages, so the real-world effect may be smaller.
 
-6. What this experiment allows us to conclude is a short-term effect: the religious-values message shifts the attitudes toward refugees that respondents report in a survey right after reading it. We can say that, right after seeing the message, warmth toward refugees and support for resettlement were higher than in the control group. However, there are three things we cannot conclude. First, we do not know whether the effect lasts for days or weeks. Second, we do not know whether a change in survey answers also leads to a change in behavior. Third, we do not know whether the effect holds in a real-world setting where opposing messages are also present.
+6. What this experiment allows us to conclude is a short-term effect: the religious value message shifts the attitudes toward refugees that respondents report in a survey right after reading it. We can say that, right after seeing the message, warmth toward refugees and support for resettlement were higher than in the control group. However, there are three things we cannot conclude. First, we do not know whether the effect lasts for days or weeks. Second, we do not know whether a change in survey answers also leads to a change in behavior. Third, we do not know whether the effect holds in a real-world setting where opposing messages are also present.
 
 --------------------------------------------------------------------------------
 
 ## Question 6: Reading the Published Results
 
 1. Compare your unweighted estimates with Table 2 of the paper. The authors use YouGov sample weights and regression, so your estimates need not be numerically identical. Explain what each approach targets.
-2. Which outcomes provide evidence that the religious-values message increased support for refugees? Which outcomes produce null results?
-3. Does the paper support the hypothesis that adding an evangelical source cue makes the religious-values message more effective? Cite the relevant comparison.
+2. Which outcomes provide evidence that the religious value message increased support for refugees? Which outcomes produce null results?
+3. Does the paper support the hypothesis that adding an evangelical source cue makes the religious value message more effective? Cite the relevant comparison.
 4. Summarize the paper's theoretical claim and central empirical finding in no more than 150 words.
 5. Propose one follow-up experiment in a different population or political context. Clearly identify the treatment, outcome, target population, and the average treatment effect of interest.
 
 --------------------------------------------------------------------------------
 
 [PUT YOUR ANSWER HERE]
-1. Comparing the unweighted difference-in-means estimates with Table 2, the effect of the religious-values message is 9.36 points versus 11.39 points on the feeling thermometer and 0.018 versus 0.05 on resettlement support. The effect of the message with a source cue is 5.32 points versus 7.18 points on the feeling thermometer and −0.137 points versus −0.25 points on unemployment benefits support. The direction of the effects is the same, but the weighted estimates are generally larger.
+1. Comparing the unweighted difference-in-means estimates with Table 2, the effect of the religious value message is 9.36 points versus 11.39 points on the feeling thermometer and 0.018 versus 0.05 on resettlement support. The effect of the message with a source cue is 5.32 points versus 7.18 points on the feeling thermometer and −0.137 points versus −0.25 points on unemployment benefits support. The direction of the effects is the same, but the weighted estimates are generally larger.
 The two approaches target different quantities. The unweighted difference in means gives equal weight to all 682 respondents, so it estimates the average treatment effect in this analysis sample. In contrast, the authors’ weighted regression adjusts the sample to match the makeup of the population estimated by Pew, so it targets the average treatment effect in that population.
 
-2. The outcomes that provide evidence that the religious-values message increased support for refugees are the feeling thermometer and resettlement support. The feeling thermometer is 11.39 points higher than in the control group and is statistically significant at the p<0.01 level, so it is strong evidence. Resettlement support is 0.05 higher but is significant only at the p<0.10 level, so it is relatively weak evidence. In contrast, the schooling item and the unemployment benefits item show null results that are not statistically significant.
+2. The outcomes that provide evidence that the religious value message increased support for refugees are the feeling thermometer and resettlement support. The feeling thermometer is 11.39 points higher than in the control group and is statistically significant at the p<0.01 level, so it is strong evidence. Resettlement support is 0.05 higher but is significant only at the p<0.10 level, so it is relatively weak evidence. In contrast, the schooling item and the unemployment benefits item show null results that are not statistically significant.
 
 3. The paper does not support Hypothesis 2. The message with a source cue and the message without one use the same wording except for the source cue, so the difference between them is the effect of the source cue itself. Table 2 also shows no evidence that the source cue made the effect larger. On the feeling thermometer, the effect of the message with a source cue (7.18 points) is smaller than that of the message without one (11.39 points), and resettlement support was weakly significant only for the message without a source cue. Neither treatment had an effect on the schooling item, and unemployment benefits support actually decreased only for the message with a source cue.
 
 4. This paper argues that even in the Trump era, when partisanship was strong, messages that appeal to a group’s core values can move partisans away from their party’s position. The authors randomly showed white evangelical Republicans a pro-refugee message based on the teachings of Jesus. The message raised warmth toward refugees by about 11 points on a 0–100 scale and slightly increased support for resettlement. However, it did not increase support for public benefits for refugees, and adding a source cue from evangelical leaders did not make the message more effective. The effect was larger for people with a stronger evangelical identity, and even people with a strong Republican identity did not push back against the message.
 
-5. As a follow-up study, we could test whether showing a religious-values message to conservative Protestants in South Korea changes their attitudes toward sexual minorities. In South Korea, there has been a long debate over passing an anti-discrimination law, and conservative Protestant groups have strongly opposed this law. The target population is conservative party supporters who identify themselves as Protestant, and the treatment is a religious message that emphasizes loving one’s neighbor. These respondents are randomly divided into two groups: the treatment group reads the religious message, and the control group sees no message.
+5. As a follow-up study, we could test whether showing a religious value message to conservative Protestants in South Korea changes their attitudes toward sexual minorities. In South Korea, there has been a long debate over passing an anti-discrimination law, and conservative Protestant groups have strongly opposed this law. The target population is conservative party supporters who identify themselves as Protestant, and the treatment is a religious message that emphasizes loving one’s neighbor. These respondents are randomly divided into two groups: the treatment group reads the religious message, and the control group sees no message.
 The outcome is a feeling thermometer score in which respondents rate their feelings toward sexual minorities from 0 to 100. The average treatment effect of interest is the average, across this whole population, of the difference in feeling thermometer scores between reading and not reading the message.
 --------------------------------------------------------------------------------
 
