@@ -2,13 +2,11 @@
 
 **Full citation:** Hainmueller, J., Mummolo, J., & Xu, Y. (2019). How much should we trust estimates from multiplicative interaction models? Simple tools to improve empirical practice. *Political Analysis*, 27(2), 163–192. https://doi.org/10.1017/pan.2018.46
 
-*Page numbers are the printed page numbers of the published article.*
-
 ---
 
 ## 1. What the paper establishes
 
-*(to be written)*
+A large portion of published findings employing multiplicative interaction models with at least one continuous variable are fragile and model dependent. Most models assume a linear interaction effect that changes at a constant rate and estimate of the conditional effects of the independent variable can be misleading if there is a lack of common support of the moderator. This paper propose a checklist of simple diagnostics and offer flexible estimation strategies to improve current practice guidelines.
 
 ## 2. Checks for a reviewer
 
