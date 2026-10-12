@@ -327,7 +327,7 @@ def _renumber(text):
         news = sorted({old2new[o] for o in olds})
         return "연번 " + "·".join(str(n) for n in news)
     text = re.sub(r"연번 (\d+)(?:([~·])(\d+))?", conv, text)
-    text = re.sub(r"연번 (\\d)([과와])", lambda m: "연번 " + m.group(1) + ("과" if m.group(1) in "136780" else "와"), text)
+    text = re.sub(r"연번 (\d)([과와])", lambda m: "연번 " + m.group(1) + ("과" if m.group(1) in "136780" else "와"), text)
     return re.sub(r"  +", " ", text).strip()
 
 def merge_rows(rows):
